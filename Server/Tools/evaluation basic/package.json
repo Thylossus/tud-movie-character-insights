@@ -1,0 +1,11 @@
+{
+  "name": "evaluate-basic",
+  "version": "1.0.1",
+  "description": "",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "mathjs": "^3.5.3",
+    "summary-statistics": "^1.0.0",
+    "underscore": "^1.8.3"
+  }
+}

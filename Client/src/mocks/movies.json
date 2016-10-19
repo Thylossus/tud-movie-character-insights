@@ -1,0 +1,38 @@
+[
+    {
+        "_id": 1,
+        "name": "The Lord of the Rings: The Fellowship of the Ring",
+        "picture": {
+          "path": "https://characterinsights.azurewebsites.net/img/lotr_1.jpg",
+          "source": "http://ia.media-imdb.com/images/M/MV5BNTEyMjAwMDU1OV5BMl5BanBnXkFtZTcwNDQyNTkxMw@@._V1_UY268_CR0,0,182,268_AL_.jpg"
+        },
+        "plot": "An ancient Ring thought lost for centuries has been found, and through a strange twist in fate has been given to a small Hobbit named Frodo. When Gandalf discovers the Ring is in fact the One Ring of the Dark Lord Sauron, Frodo must make an epic quest to the Cracks of Doom in order to destroy it! However he does not go alone. He is joined by Gandalf, Legolas the elf, Gimli the Dwarf, Aragorn, Boromir and his three Hobbit friends Merry, Pippin and Samwise. Through mountains, snow, darkness, forests, rivers and plains, facing evil and danger at every corner the Fellowship of the Ring must go. Their quest to destroy the One Ring is the only hope for the end of the Dark Lords reign!",
+        "year": 2001,
+        "director": "Peter Jackson",
+        "characters": [1, 2, 3, 4, 5]
+    },
+    {
+        "_id": 2,
+        "name": "The Lord of the Rings: The Two Towers",
+        "picture": {
+          "path": "https://characterinsights.azurewebsites.net/img/lotr_2.jpg",
+          "source": "http://ia.media-imdb.com/images/M/MV5BMTAyNDU0NjY4NTheQTJeQWpwZ15BbWU2MDk4MTY2Nw@@._V1_UY268_CR0,0,182,268_AL_.jpg"
+        },
+        "plot": "The Fellowship has been broken. Boromir is dead, Frodo Baggins and Samwise Gamgee have gone to Mordor alone to destroy the One Ring, Merry and Pippin have been captured by the Uruk-hai, and Aragorn, Legolas, and Gimli have made friends of the Rohan, a race of humans that are in the path of the upcoming war, led by its aging king, Théoden. The two towers between Mordor and Isengard, Barad-dûr and Orthanc, have united in their lust for destruction. The corrupt wizard Saruman, under the power of the Dark Lord Sauron, and his slimy assistant, Gríma Wormtongue, have created a grand Uruk-hai army bent on the destruction of Man and Middle-earth. The rebellion against Sauron is building up and will be led by Gandalf the White, who was thought to be dead after the Balrog captured him. One of the Ring's original bearers, the creature Gollum, has tracked Frodo and Sam down in search of his 'precious', but is captured by the Hobbits and used as a way to lead them to Mt. Doom. The War of the Ring has now begun...",
+        "year": 2002,
+        "director": "Peter Jackson",
+        "characters": [1, 2, 3, 4, 5]
+    },
+    {
+        "_id": 3,
+        "name": "The Lord of the Rings: The Return of the King",
+        "picture": {
+          "path": "https://characterinsights.azurewebsites.net/img/lotr_3.jpg",
+          "source": "http://ia.media-imdb.com/images/M/MV5BMjE4MjA1NTAyMV5BMl5BanBnXkFtZTcwNzM1NDQyMQ@@._V1_UX182_CR0,0,182,268_AL_.jpg"
+        },
+        "plot": "Gondor is overrun by the orcs of Mordor, and Gandalf rides to Minas Tirith to aid the humans in the war that is ahead. Aragorn must realize his true identity and purpose as the King of Men, and journey with Gimli and Legolas to summon the Army of the Dead so that the battle against evil can be won. Meanwhile, paranoia and suspicion rises between Frodo, Sam and Gollum as they continue their increasingly dark and dangerous travel to Mount Doom, the one place where The Ring can be destroyed once and for all.",
+        "year": 2003,
+        "director": "Peter Jackson",
+        "characters": [1, 2, 3, 4, 5]
+    }
+]

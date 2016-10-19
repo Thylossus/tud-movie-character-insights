@@ -1,0 +1,7 @@
+extends layout
+
+block content
+	h1 Watson Personality Insights API test
+	form(method="post",action="/watsonCall")
+		textarea(name="inputText",style="width: 600px;height: 500px;") Enter the Text here (min 200 words)
+		button#btnSubmit(type="submit") submit

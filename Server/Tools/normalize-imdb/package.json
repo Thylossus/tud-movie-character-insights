@@ -1,0 +1,28 @@
+{
+  "name": "normalize-imdb",
+  "version": "1.0.0",
+  "description": "Tool to normalize the imdb data and the insight data",
+  "main": "app.js",
+  "scripts": {
+    "lint": "eslint --fix .",
+    "start": "node ./app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Thylossus/movie-character-insights.git"
+  },
+  "author": "Tobias Röding",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "bluebird": "^3.4.1",
+    "characterinsights-mongoose-models": "file:../../include/js/moviemodels",
+    "mongoose": "^4.5.2",
+    "serverutils": "file:../../include/js/serverutils"
+  },
+  "devDependencies": {
+    "eslint": "^3.0.0",
+    "eslint-config-airbnb-base": "^3.0.1",
+    "eslint-plugin-import": "^1.10.1"
+  }
+}

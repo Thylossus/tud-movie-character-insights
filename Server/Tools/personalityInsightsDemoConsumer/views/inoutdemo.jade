@@ -1,0 +1,8 @@
+extends layout
+
+block content
+	h1 Watson Personality Insights In/Out Demo
+	form(method="post",action="/inoutdemoaction")
+		textarea(name="inputText",style="width: 600px;height: 500px;") Enter the Text here (min 200 words)
+		button#btnSubmit(type="submit",name="save") save in DB
+		button#btnSubmit(type="submit",name="process") process all DB entries

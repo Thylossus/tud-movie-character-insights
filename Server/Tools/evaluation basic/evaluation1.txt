@@ -1,0 +1,15 @@
+# Teilnehmer
+47
+# Häufigkeitsverteilung
+# 0	1	2	3	4	5	6	7	8	9	10
+  0	4	8	14	8	6	3	3	1	0	0	
+# Average correct Answers
+3.6382978723404253
+# Average time per question(all)
+27661.572340425533
+# Average time per quiz(all)
+276615.72340425535
+# Average time per question(without outliers)
+18235.392609699767
+# Average time per quiz(without outliers)
+214476.97727272726

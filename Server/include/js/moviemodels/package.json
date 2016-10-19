@@ -1,0 +1,11 @@
+{
+  "name": "characterinsights-mongoose-models",
+  "version": "0.10.0",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "peerdependencies": {
+	"mongoose": "^4.4.16"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "movie-resolver",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./app.js"
+  },
+  "dependencies": {
+    "async": "^2.0.0-rc.5",
+    "characterinsights-mongoose-models": "file:..\\..\\include\\js\\moviemodels",
+    "diacritics": "^1.2.3",
+    "fast-levenshtein": "^1.1.3",
+    "js-combinatorics": "^0.5.2",
+    "jsdom": "^9.2.1",
+    "mongodb": "^2.1.21",
+    "mongoose": "^4.4.19",
+    "omdb": "^0.5.0",
+    "request": "^2.72.0",
+    "serverutils": "file:..\\..\\include\\js\\serverutils",
+    "underscore": "^1.8.3"
+  }
+}

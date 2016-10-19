@@ -1,0 +1,12 @@
+extends layout
+
+block content
+    - if(character)
+        script(src='/lib/imagesaver.js')
+        h3= movie.title
+        .row
+            .col-xs-12
+                #character
+                    include character
+    - else
+        p Fertig

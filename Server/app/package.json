@@ -1,0 +1,42 @@
+{
+  "name": "backend",
+  "version": "0.9.9",
+  "description": "Backend web service for the movie character insights application. Exposes its service via a REST API powered by Express.",
+  "main": "app.js",
+  "scripts": {
+    "lint": "eslint --fix .",
+    "start": "nodemon app.js",
+    "test": "swagger project test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Thylossus/movie-character-insights.git"
+  },
+  "keywords": [
+    "REST",
+    "API",
+    "Backend"
+  ],
+  "author": "Tobias Röding",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "bluebird": "^3.4.0",
+    "characterinsights-mongoose-models": "file:../include/js/moviemodels",
+    "personalityinsightswrapper": "file:../include/js/personalityinsightswrapper",
+    "express": "^4.12.3",
+    "ipware": "0.0.8",
+    "mongoose": "^4.4.19",
+    "nodemon": "^1.9.2",
+    "serverutils": "file:../include/js/serverutils",
+    "swagger-express-mw": "^0.1.0",
+    "swagger-tools": "^0.10.1"
+  },
+  "devDependencies": {
+    "eslint": "^2.13.1",
+    "eslint-config-airbnb-base": "^3.0.1",
+    "eslint-plugin-import": "^1.10.0",
+    "should": "^7.1.0",
+    "supertest": "^1.0.0"
+  }
+}

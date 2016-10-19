@@ -1,0 +1,19 @@
+{
+  "name": "serverutils",
+  "version": "1.0.1",
+  "description": "Package that contains utilities such as reading configuration files.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "util",
+    "utility",
+    "config"
+  ],
+  "author": "Tobias Kahse <tobias.kahse@stud.tu-darmstadt.de>",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "lodash": "^4.11.2"
+  }
+}

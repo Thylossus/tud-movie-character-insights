@@ -1,0 +1,15 @@
+{
+    "name": "cli-mongo",
+    "version": "1.0.0",
+    "description": "Build the connection string for the mongo cli.",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "dependencies": {
+        "serverutils": "file:../../include/js/serverutils"
+    },
+    "author": "Tobias Kahse",
+    "license": "UNLICENSED"
+}

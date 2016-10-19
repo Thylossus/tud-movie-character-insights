@@ -1,0 +1,28 @@
+.panel.panel-default
+    .panel-heading
+        span=character.names.resolved + ' (' + character.names.script + ')'
+    .panel-body
+        .row
+            .col-xs-3
+                a.thumbnail(href='#', data-thumbnail=character.image.path)
+                    .thumb#characterThumbnail
+            .col-xs-9
+                .form-group
+                    label(for='query') Query String
+                    - var name = character.names.resolved || character.names.script;
+                    input.form-control#query(type='text', value='"'+name+'" ' + movie.name)
+                #imageUpload
+                    .form-group
+                        label(for='imagePath') Link
+                        input.form-control#imagePath(type='text', placeholder='Bild URL oder von Google hierher ziehen')
+                    .form-group
+                        label(for='imageSrc') Quelle
+                        input.form-control#imageSrc(type='text', placeholder='Webseite URl')
+
+        .row
+            .col-xs-3
+            .col-xs-2
+                button.btn.btn-success#btnSend(role='button', data-character=character._id, data-movie=movie.id) Speichern
+            .col-xs-2
+                button.btn.btn-default#btnNext(role='button', data-character=character._id, data-movie=movie.id) Keine Ahnung!
+

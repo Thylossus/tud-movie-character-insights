@@ -1,0 +1,15 @@
+{
+  "name": "personalityinsightswrapper",
+  "version": "1.0.27",
+  "description": "Consumes the IBM Watson PersonalityInsights service and exposes necessary data",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "watson-developer-cloud": "*",
+	"serverutils": "file:../serverutils"
+	},
+  "author": "Johannes Riedel",
+  "license": "Unlicensed"
+}

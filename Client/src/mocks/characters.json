@@ -1,0 +1,77 @@
+[
+    {
+        "_id": 1,
+        "names": {
+          "resolved": "Frodo Baggins",
+          "script": "Frodo"
+        },
+        "image": {
+          "path": "https://characterinsights.azurewebsites.net/img/frodo.png",
+          "originalUrl": "http://vignette2.wikia.nocookie.net/lotr/images/5/54/Untitledjk.png/revision/latest/scale-to-width-down/220?cb=20130313174543",
+          "source": "lotr.wikia.com",
+          "license": "unknown"
+        },
+        "actor": "Elijah Wood",
+        "description": "Frodo Baggins, son of Drogo Baggins, was a Hobbit of the Shire in the Third Age. He was and is most renowned for his leading role in the Quest of the Ring in which he bore the One Ring to Mount Doom, where it was ultimately destroyed. He was a Ring-bearer, best friend to Samwise Gamgee and one of the three Hobbits who sailed from Middle-earth to the Uttermost West at the end of the Third Age."
+    },
+    {
+        "_id": 2,
+        "names": {
+          "resolved": "Samwise Gamgee",
+          "script": "Samwise"
+        },
+        "image": {
+          "path": "https://characterinsights.azurewebsites.net/img/sam.jpg",
+          "originalUrl": "http://vignette4.wikia.nocookie.net/lotr/images/2/20/Sam.jpg/revision/latest/scale-to-width-down/220?cb=20070623123241",
+          "source": "lotr.wikia.com",
+          "license": "unknown"
+        },
+        "actor": "Sean Astin",
+        "description": "Samwise Gamgee, also known as Sam, was a Hobbit of the Shire. He was Frodo Baggins' gardener and best friend. Sam proved himself to be Frodo's closest and most dependable companion, the most loyal of the Fellowship of the Ring, and also played a necessary role in protecting Frodo and destroying the One Ring."
+    },
+    {
+        "_id": 3,
+        "names": {
+          "resolved": "Gandalf",
+          "script": "Gandalf"
+        },
+        "image": {
+          "path": "https://characterinsights.azurewebsites.net/img/gandalf.jpg",
+          "originalUrl": "http://vignette2.wikia.nocookie.net/lotr/images/e/e7/Gandalf_the_Grey.jpg/revision/latest/scale-to-width-down/220?cb=20121110131754",
+          "source": "lotr.wikia.com",
+          "license": "unknown"
+        },
+        "actor": "Sir Ian McKellen",
+        "description": "Gandalf the Grey, later known as Gandalf the White, also named originally Olórin, Tharkûn, and Mithrandir, was a wizard, or Istar, sent by the West in the Third Age to combat the threat of Sauron. He joined Thorin and his company to reclaim Erebor from Smaug, convoked the Fellowship of the Ring to destroy the One Ring, and led the Free Peoples in the final campaign of the War of the Ring."
+    },
+    {
+        "_id": 4,
+        "names": {
+          "resolved": "Aragorn",
+          "script": "Aragorn"
+        },
+        "image": {
+          "path": "https://characterinsights.azurewebsites.net/img/aragorn.jpg",
+          "originalUrl": "http://vignette3.wikia.nocookie.net/lotr/images/0/09/Aragorn_3.jpg/revision/latest/scale-to-width-down/220?cb=20100617184918",
+          "source": "lotr.wikia.com",
+          "license": "unknown"
+        },
+        "actor": "Viggo Mortensen",
+        "description": "Aragorn II, the son of Arathorn II and Gilraen, also known as Elessar, was the 16th Chieftain of the Dúnedain of the North; he was later crowned King Elessar Telcontar (March 1, 2931 - FO 120 or SR 1541), the 26th King of Arnor, and the 35th King of Gondor and first High King of Gondor and Arnor, since the short reign of Isildur. He was a great warrior, and as the heir of Isildur bore the shards of Narsil, reforged and renamed Andúril, in the War of the Ring."
+    },
+    {
+        "_id": 5,
+        "names": {
+          "resolved": "Legolas",
+          "script": "Legolas"
+        },
+        "image": {
+          "path": "https://characterinsights.azurewebsites.net/img/legolas.png",
+          "originalUrl": "http://vignette4.wikia.nocookie.net/lotr/images/3/33/Legolas_-_in_Two_Towers.PNG/revision/latest/scale-to-width-down/220?cb=20120916035151",
+          "source": "lotr.wikia.com",
+          "license": "unknown"
+        },
+        "actor": "Orlando Bloom",
+        "description": "Legolas was a Sindarin elf who was part of the Fellowship of the Ring in the Third Age. As he was the son of the Elvenking Thranduil of Mirkwood, Legolas was a Prince of the Woodland Realm (Mirkwood), a messenger, and a master bowman. With his keen eyesight, sensitive hearing, and excellent bowmanship, Legolas was a valuable resource to the other eight of the Fellowship. His age was never stated by Tolkien. Legolas was well-known for becoming friends with the dwarf Gimli, despite their long held differences."
+    }
+]
