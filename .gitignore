@@ -53,3 +53,7 @@ __pycache__
 
 # Cache files of the ReEvaluator
 *.cache.json
+
+# Resource files for docker container
+dbdump.tgz
+images.tar.gz

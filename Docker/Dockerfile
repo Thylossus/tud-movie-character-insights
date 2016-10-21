@@ -26,43 +26,72 @@ RUN apt-get install -y nodejs
 # Install Nginx
 RUN apt-get install -y nginx
 
+# Install python + dependencies
+RUN apt-get install -y python3 python3-pymongo
+
 # Download repository
+WORKDIR /code
 RUN git clone https://github.com/Thylossus/tud-movie-character-insights
 
-# Copy code
-COPY ./tud-movie-character-insights/Server /mci/server
-COPY ./tud-movie-character-insights/Client /mci/client
+# Create directory for client and images
+RUN mkdir -p /var/www/html/mci/img/movies
+
+# Build client
+WORKDIR /code/tud-movie-character-insights/Client
+RUN npm install
+RUN echo {} > ./build.user.config.json
+RUN npm run build
+RUN cp ./build/* /var/www/html/mci
+
+# Build server
+WORKDIR /code/tud-movie-character-insights/Server/app
+RUN npm install --production
+RUN mkdir /server
+RUN cp -R /code/tud-movie-character-insights/Server/* /server
+
+# Create empty certificates so that the server won't fail to start
+RUN mkdir /server/dbCerts && \
+    touch /server/dbCerts/CAChain.pem && \
+    touch /server/dbCerts/Mongodb.pem 
+
+# Create database and temp directory
+RUN mkdir /data && mkdir /temp
 
 # Copy resources
 # Expecting the following files in this directory
 #  - images.tar.gz
-#  - dbdump.bson
-COPY ./images.tar.gz /temp
-COPY ./dbdump.bson /temp
+#  - dbdump.tgz
+#  - nginx.conf
+#  - mongod.conf
+#  - startup.sh
+#  - server.user.conf
+# COPY ./images.tar.gz /temp
+COPY ./dbdump.tgz /temp
+COPY ./nginx.conf /etc/nginx
+COPY ./mongod.conf /etc
+COPY startup.sh /server
+COPY server.user.conf /server
 
-# Copy server.user.conf (expect the file to be in this directory)
-COPY ./server.user.conf /mci/server
+# Extract and copy images
+# WORKDIR /temp
+# RUN tar -xzvf images.tar.gz -C /var/www/html/img/movies
 
-# Build client
-WORKDIR /mci/client
-RUN npm install && npm run prebuild && npm run build
+# Restore database dump
+RUN mkdir /temp/dbdump && tar -xzvf /temp/dbdump.tgz -C /temp/dbdump
+RUN mongod -f /etc/mongod.conf --fork --syslog && \ 
+    mongorestore --host localhost --port 27017 /temp/dbdump/2016-10-21_06h34m.Friday
 
-# Build server
-WORKDIR /mci/server
-RUN npm install --production
+# Replace image paths
+RUN python3 /server/Tools/urlUpdater/updateURLs.py newHost=http://localhost
 
-# 
+# Cleanup
+# RUN rm -rf /code
+# RUN rm -rf /temp
+# RUN rm -rf /var/lib/apt/lists/*
 
-# TODO
-# [ ] configure mongodb
-# [ ] configure nginx
-# [x] COPY code
-# [x] COPY resources
-# [x] COPY server.user.conf (could also be solved by mounting the file, but not on windows hosts...)
-# [x] build client
-# [ ] copy client code to nginx host directory (or configure nginx so that it hosts the build folder)
-# [ ] extract images
-# [ ] start database server
-# [ ] import database dump
-# [ ] start nginx
-# [ ] start server (npm start)
+# Expose ports
+EXPOSE 80
+
+# Make startup script executable and expose it as the entry point
+RUN chmod +x /server/startup.sh
+ENTRYPOINT /server/startup.sh
