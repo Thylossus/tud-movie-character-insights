@@ -8,12 +8,12 @@ import ssl
 
 # Returns the MongoClient that connects either to the local database or 
 # to the non-local database, depending on the current configuration
-def getMongoClient(silent = False):
-	mongoMode = config.getProperty("mongo.connection.mode")
+def getMongoClient(silent = False, orMongoMode = None, orDbName = None, orHost = None, orUserName = None, orPassword = None):
+	mongoMode = config.getProperty("mongo.connection.mode") if orMongoMode is None else orMongoMode
 	if not mongoMode in ['ssl','local']:
 		raise AttributeError('mongo.connection.mode must be either ssl or local')
 
-	dbName = config.getProperty("mongo.dbname")
+	dbName = config.getProperty("mongo.dbname") if orDbName is None else orDbName
 
 	if mongoMode == 'local':
 		if not silent:
@@ -21,9 +21,9 @@ def getMongoClient(silent = False):
 		client = MongoClient()
 		return client, client[dbName]
 	else:
-		user = config.getProperty("mongo.user")
-		password = config.getProperty("mongo.pass")
-		host = config.getProperty("mongo.url")
+		user = config.getProperty("mongo.user") if orUserName is None else orUserName
+		password = config.getProperty("mongo.pass") if orPassword is None else orPassword
+		host = config.getProperty("mongo.url") if orHost is None else orHost
 		if host[0:10]=='mongodb://':
 			host = host[10:]
 
