@@ -26,29 +26,29 @@ SwaggerExpress.create(config, (err, swaggerExpress) => {
   swaggerExpress.register(app);
 
   // Read the certificates
-  const ca = [fs.readFileSync(configFile.dbCertPath + 'CAChain.pem')];
-  const key = fs.readFileSync(configFile.dbCertPath + 'Mongodb.pem');
+  // const ca = [fs.readFileSync(configFile.dbCertPath + 'CAChain.pem')];
+  // const key = fs.readFileSync(configFile.dbCertPath + 'Mongodb.pem');
 
   // Connect to mongoDB via mongoose
-  const user = configFile['mongo.user'];
-  const pass = configFile['mongo.pass'];
+  // const user = configFile['mongo.user'];
+  // const pass = configFile['mongo.pass'];
   const db = configFile['mongo.dbname'];
   const url = configFile['mongo.url'] + `/${db}`;
 
   const options = {
-    user,
-    pass,
+    // user,
+    // pass,
     name: db,
-    auth: {
-      authSource: 'admin',
-    },
-    server: {
-      ssl: true,
-      sslValidate: true,
-      sslCA: ca,
-      sslKey: key,
-      sslCert: key,
-    },
+    // auth: {
+    //   authSource: 'admin',
+    // },
+    // server: {
+    //   ssl: true,
+    //   sslValidate: true,
+    //   sslCA: ca,
+    //   sslKey: key,
+    //   sslCert: key,
+    // },
   };
 
   mongoose.connect(url, options, err => {
