@@ -23,11 +23,12 @@
   "dependencies": {
     "bluebird": "^3.4.0",
     "characterinsights-mongoose-models": "file:../include/js/moviemodels",
-    "personalityinsightswrapper": "file:../include/js/personalityinsightswrapper",
+    "cors": "^2.8.1",
     "express": "^4.12.3",
     "ipware": "0.0.8",
     "mongoose": "^4.4.19",
     "nodemon": "^1.9.2",
+    "personalityinsightswrapper": "file:../include/js/personalityinsightswrapper",
     "serverutils": "file:../include/js/serverutils",
     "swagger-express-mw": "^0.1.0",
     "swagger-tools": "^0.10.1"
