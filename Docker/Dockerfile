@@ -27,7 +27,8 @@ RUN apt-get install -y nodejs
 RUN apt-get install -y nginx
 
 # Install python + dependencies
-RUN apt-get install -y python3 python3-pymongo
+RUN apt-get install -y python3 python3-pip
+RUN pip3 install pymongo 
 
 # Download repository
 WORKDIR /code
@@ -92,6 +93,8 @@ RUN rm -rf /var/lib/apt/lists/*
 
 # Expose ports
 EXPOSE 80
+
+RUN cat /Server/app/app.js
 
 # Make startup script executable and expose it as the entry point
 RUN chmod +x /Server/startup.sh
