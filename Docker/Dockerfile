@@ -67,12 +67,12 @@ RUN mkdir /data && mkdir /temp
 #  - mongod.conf
 #  - startup.sh
 #  - server.user.conf
-# COPY ./images.tar.gz /temp
-COPY ./dbdump.tgz /temp
-COPY ./nginx.conf /etc/nginx
-COPY ./mongod.conf /etc
-COPY startup.sh /Server
-COPY server.user.conf /Server
+# COPY ./images.tar.gz /temp/
+COPY ./dbdump.tgz /temp/
+COPY ./nginx.conf /etc/nginx/
+COPY ./mongod.conf /etc/
+COPY startup.sh /Server/
+COPY server.user.conf /Server/
 
 # Restore database dump
 RUN mkdir /temp/dbdump && tar -xzvf /temp/dbdump.tgz -C /temp/dbdump
