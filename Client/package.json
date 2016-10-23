@@ -7,7 +7,7 @@
     "start": "webpack-dev-server --hot --inline --open",
     "lint": "eslint --ext=js --ext=jsx --ignore-path .gitignore .",
     "build": "webpack -p --config webpack.config.prod.js",
-    "prebuild": "gulp server-ref"
+    "pre": "gulp server-ref"
   },
   "repository": {
     "type": "git",
