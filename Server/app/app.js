@@ -2,7 +2,6 @@ const SwaggerExpress = require('swagger-express-mw');
 const SwaggerUi = require('swagger-tools/middleware/swagger-ui');
 const app = require('express')();
 const mongoose = require('mongoose');
-const cors = require('cors');
 const fs = require('fs');
 const util = require('serverutils');
 const configFile = util.config.getConfiguration();
@@ -24,7 +23,7 @@ SwaggerExpress.create(config, (err, swaggerExpress) => {
   app.use(SwaggerUi(swaggerExpress.runner.swagger));
 
   // allow CORS
-  app.use(cors());
+  app.use(SwaggerExpress.CORS());
 
   // install middleware
   swaggerExpress.register(app);
