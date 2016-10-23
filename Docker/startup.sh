@@ -1,11 +1,15 @@
 #!/bin/sh
-# nginx
-# mongod -f /etc/mongod.conf --fork --syslog
+nginx
+mongod -f /etc/mongod.conf --fork --logappend --logpath /logs/mongod.log
 
-# echo "mongod started?"
-# ps aux | grep mongod
-# echo "nginx started?"
-# ps aux | grep nginx
+cd /Server/Tools/urlUpdater
+python3 updateURLs.py newHost=http://localhost
 
-echo "Starting app"
-node /server/app/app.js
+echo "mongod started?"
+ps aux | grep mongod
+echo "nginx started?"
+ps aux | grep nginx
+
+# echo "Starting app"
+cd /Server/app
+node app.js

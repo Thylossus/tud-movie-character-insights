@@ -31,6 +31,7 @@ RUN apt-get install -y python3 python3-pymongo
 
 # Download repository
 WORKDIR /code
+RUN echo "Loading source code from repo https://github.com/Thylossus/tud-movie-character-insights"
 RUN git clone https://github.com/Thylossus/tud-movie-character-insights
 
 # Create directory for client and images
@@ -46,13 +47,13 @@ RUN cp ./build/* /var/www/html/mci
 # Build server
 WORKDIR /code/tud-movie-character-insights/Server/app
 RUN npm install --production
-RUN mkdir /server
-RUN cp -R /code/tud-movie-character-insights/Server/* /server
+RUN mkdir /Server
+RUN cp -R /code/tud-movie-character-insights/Server/* /Server
 
 # Create empty certificates so that the server won't fail to start
-RUN mkdir /server/dbCerts && \
-    touch /server/dbCerts/CAChain.pem && \
-    touch /server/dbCerts/Mongodb.pem 
+RUN mkdir /Server/dbCerts && \
+    touch /Server/dbCerts/CAChain.pem && \
+    touch /Server/dbCerts/Mongodb.pem 
 
 # Create database and temp directory
 RUN mkdir /data && mkdir /temp
@@ -69,29 +70,29 @@ RUN mkdir /data && mkdir /temp
 COPY ./dbdump.tgz /temp
 COPY ./nginx.conf /etc/nginx
 COPY ./mongod.conf /etc
-COPY startup.sh /server
-COPY server.user.conf /server
+COPY startup.sh /Server
+COPY server.user.conf /Server
+
+# Restore database dump
+RUN mkdir /temp/dbdump && tar -xzvf /temp/dbdump.tgz -C /temp/dbdump
+RUN mkdir /logs && touch /logs/mongod.log
+RUN mongod -f /etc/mongod.conf --fork --logappend --logpath /logs/mongod.log && \ 
+    mongorestore --host localhost --port 27017 /temp/dbdump/2016-10-21_06h34m.Friday 
 
 # Extract and copy images
 # WORKDIR /temp
 # RUN tar -xzvf images.tar.gz -C /var/www/html/img/movies
 
-# Restore database dump
-RUN mkdir /temp/dbdump && tar -xzvf /temp/dbdump.tgz -C /temp/dbdump
-RUN mongod -f /etc/mongod.conf --fork --syslog && \ 
-    mongorestore --host localhost --port 27017 /temp/dbdump/2016-10-21_06h34m.Friday
-
-# Replace image paths
-RUN python3 /server/Tools/urlUpdater/updateURLs.py newHost=http://localhost
+WORKDIR /Server
 
 # Cleanup
-# RUN rm -rf /code
-# RUN rm -rf /temp
-# RUN rm -rf /var/lib/apt/lists/*
+RUN rm -rf /code
+RUN rm -rf /temp
+RUN rm -rf /var/lib/apt/lists/*
 
 # Expose ports
 EXPOSE 80
 
 # Make startup script executable and expose it as the entry point
-RUN chmod +x /server/startup.sh
-ENTRYPOINT /server/startup.sh
+RUN chmod +x /Server/startup.sh
+ENTRYPOINT /Server/startup.sh

@@ -15,14 +15,12 @@ A configuration file which amongst other information contains sensitive credenti
 The configuration file contains key-value pairs. The following needs to be specified:
 
 ```
-dir.base=/server
+dir.base=/Server
 
 mongo.connection.mode=local
 mongo.dbname=characterinsights
 
 mongo.url=mongodb://localhost/${mongo.dbname}
-mongo.user=demo
-mongo.pass=demo
 
 watsonCredentialsUsername=<ADD USERNAME FOR PERSONALITY INSIGHTS SERVICE INSTANCE>
 watsonCredentialsPassword=<ADD PASSWORD FOR PERSONALITY INSIGHTS SERVICE INSTANCE>
