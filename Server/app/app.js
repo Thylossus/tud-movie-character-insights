@@ -22,6 +22,15 @@ SwaggerExpress.create(config, (err, swaggerExpress) => {
   // add swagger-ui
   app.use(SwaggerUi(swaggerExpress.runner.swagger));
 
+  // allow CORS
+  app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+
+    next();
+  });
+
   // install middleware
   swaggerExpress.register(app);
 
