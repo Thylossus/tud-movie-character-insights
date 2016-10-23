@@ -71,7 +71,7 @@ for movie in mongoDb['movies'].find():
 
 	if oldMoviePosterUrl!=newMoviePosterUrl:
 		movie['picture']['path'] = newMoviePosterUrl
-		print("\t"+oldMoviePosterUrl+" → "+newMoviePosterUrl)
+		print("\t"+oldMoviePosterUrl+" --> "+newMoviePosterUrl)
 
 	for movieCharacter in movie['characters']:
 		oldCharImageUrl = movieCharacter['picture']['path']
@@ -79,7 +79,7 @@ for movie in mongoDb['movies'].find():
 
 		if oldCharImageUrl!=newCharImageUrl:
 			movieCharacter['picture']['path'] = newCharImageUrl
-			print("\t"+oldCharImageUrl+" → "+newCharImageUrl)
+			print("\t"+oldCharImageUrl+" --> "+newCharImageUrl)
 
 	mongoDb['movies'].replace_one({'_id': movie['_id']},movie)
 
