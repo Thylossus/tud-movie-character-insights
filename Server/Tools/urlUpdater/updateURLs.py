@@ -32,7 +32,12 @@ def replaceUrl(url, newHostname):
 	if len(url) > 0:
 		m = re.search('^(http|https)://[^:/]+(:[0-9]{1,5})?/',url)
 		if m is None:
-			if not quiet:
+			if url[0]=='/':
+				if len(newHostname) == 0:
+					return url
+				else:
+					return newHostname + url
+			elif not quiet:
 				print("ERROR: Could not detect previous host in URL:",url)
 				print("       URL will not be modified.")
 			return url
@@ -51,17 +56,17 @@ for prop in sys.argv[1:]:
 newHostname = props['newHost']
 
 # Check for correct protocol
-if newHostname[0:7]!='http://' and newHostname[0:8]!="https://":
+if not (newHostname[0]=="/" or newHostname[0:7]=='http://' or newHostname[0:8]=="https://"):
 	if not quiet:
 		print("Invalid new hostname:",newHostname)
 		print("The hostname has to start either with http:// or https://")
 	exit()
 
 # Remove any trailing slashes
-while newHostname[-1:]=="/":
+while newHostname[-1:]=="/" and len(newHostname) >= 1:
 	newHostname = newHostname[:-1]
 
-if newHostname[8:].find("/") > 0:
+if len(newHostname) > 0 and (newHostname[0:4]=='http' and newHostname[8:].find("/") > 0):
 	if not quiet:
 		print("Invalid new hostname:",newHostname)
 		print("The hostname must not contain any slashes")
