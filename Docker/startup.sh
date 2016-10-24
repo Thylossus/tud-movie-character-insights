@@ -3,7 +3,7 @@ nginx
 mongod -f /etc/mongod.conf --fork --logappend --logpath /logs/mongod.log
 
 cd /Server/Tools/urlUpdater
-python3 updateURLs.py -q newHost=http://localhost
+python3 updateURLs.py -q newHost=/
 
 echo "mongod started?"
 ps aux | grep mongod
