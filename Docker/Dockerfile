@@ -4,6 +4,8 @@ MAINTAINER Tobias Kahse
 
 LABEL Description="This image is used to run the Movie Character Insights web application."
 
+RUN echo "Building movie character insights demo container"
+
 # Get the latest package lists
 RUN apt-get update
 
@@ -41,6 +43,8 @@ RUN mkdir -p /var/www/html/mci/img/movies
 # Build client
 WORKDIR /code/tud-movie-character-insights/Client
 RUN npm install
+# Update URL reference in ApiClient.js
+RUN sed -i "s#'http://localhost:8080/'#document.location.origin\+'/api'#g" ./node_modules/insights-server/src/ApiClient.js
 RUN echo {} > ./build.user.config.json
 RUN npm run build
 RUN cp ./build/* /var/www/html/mci
@@ -67,7 +71,7 @@ RUN mkdir /data && mkdir /temp
 #  - mongod.conf
 #  - startup.sh
 #  - server.user.conf
-# COPY ./images.tar.gz /temp/
+COPY ./images.tar.gz /temp/
 COPY ./dbdump.tgz /temp/
 COPY ./nginx.conf /etc/nginx/
 COPY ./mongod.conf /etc/
@@ -81,8 +85,8 @@ RUN mongod -f /etc/mongod.conf --fork --logappend --logpath /logs/mongod.log && 
     mongorestore --host localhost --port 27017 /temp/dbdump/2016-10-21_06h34m.Friday 
 
 # Extract and copy images
-# WORKDIR /temp
-# RUN tar -xzvf images.tar.gz -C /var/www/html/img/movies
+WORKDIR /temp
+RUN tar -xzvf images.tar.gz -C /var/www/html/mci/img/movies
 
 WORKDIR /Server
 
