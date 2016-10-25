@@ -10,6 +10,13 @@ Besides the files already contained in this folder, the following files have to 
 These files are necessary to build the container but cannot be hosted in this repository as they are too large
 or contain sensitive information.
 
+## Building
+To build the container, just provide the files mentioned above (and explained below), go to the `Docker` folder (i.e. this folder) and run
+
+```
+docker build .
+```
+
 ## server.user.conf
 A configuration file which amongst other information contains sensitive credentials.
 The configuration file contains key-value pairs. The following needs to be specified:
