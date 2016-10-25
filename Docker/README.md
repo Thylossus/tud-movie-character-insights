@@ -38,3 +38,14 @@ An archive containing all movie posters and character portraits.
 
 ## dbdump.tgz
 A database dump which will be used to populate the container's database.
+
+## Running
+The web application is exposed through port 80. To get access to this port, it has to be exposed to the host. This can be done as follows:
+
+```
+# Assumption: you are already in the Docker folder
+# Build the container and give it a name (just for convenience)
+docker build . -t demo
+# Run the container and bind port 80 of the container to port 9000 of the host
+docker run -p 9000:80 --name moviecharacterinsights -t demo
+```
