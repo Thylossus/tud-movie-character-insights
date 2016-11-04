@@ -27,7 +27,6 @@ RUN apt-get install -y nodejs
 
 # Install Nginx
 RUN apt-get install -y nginx apache2-utils
-RUN htpasswd -b -c /Server/.demopass demo pass
 
 # Install python + dependencies
 RUN apt-get install -y python3 python3-pip
@@ -76,6 +75,7 @@ RUN cp ./build/* /var/www/html/mci
 WORKDIR /code/tud-movie-character-insights/Server/app
 RUN npm install --production
 RUN mkdir /Server
+RUN htpasswd -b -c /Server/.demopass demo pass
 RUN cp -R /code/tud-movie-character-insights/Server/* /Server
 
 # Cleanup
