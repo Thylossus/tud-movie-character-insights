@@ -26,7 +26,8 @@ RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
 RUN apt-get install -y nodejs
 
 # Install Nginx
-RUN apt-get install -y nginx
+RUN apt-get install -y nginx apache2-utils
+RUN htpasswd -b -c /Server/.demopass demo pass
 
 # Install python + dependencies
 RUN apt-get install -y python3 python3-pip
