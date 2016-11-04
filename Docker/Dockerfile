@@ -50,6 +50,9 @@ RUN mkdir /logs && touch /logs/mongod.log
 RUN mongod -f /etc/mongod.conf --fork --logappend --logpath /logs/mongod.log && \
     mongorestore --host localhost --port 27017 /temp/dbdump/2016-10-21_06h34m.Friday 
 
+# Create directory for client and images
+RUN mkdir -p /var/www/html/mci/img/movies
+
 # Extract and copy images
 WORKDIR /temp
 RUN tar -xzvf images.tar.gz -C /var/www/html/mci/img/movies
@@ -58,9 +61,6 @@ RUN tar -xzvf images.tar.gz -C /var/www/html/mci/img/movies
 WORKDIR /code
 RUN echo "Loading source code from repo https://github.com/Thylossus/tud-movie-character-insights"
 RUN git clone https://github.com/Thylossus/tud-movie-character-insights
-
-# Create directory for client and images
-RUN mkdir -p /var/www/html/mci/img/movies
 
 # Build client
 WORKDIR /code/tud-movie-character-insights/Client
