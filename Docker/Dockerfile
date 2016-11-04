@@ -39,11 +39,9 @@ RUN mkdir /data && mkdir /temp
 # Expecting the following files in this directory
 #  - images.tar.gz
 #  - dbdump.tgz
-#  - nginx.conf
 #  - mongod.conf
 COPY ./images.tar.gz /temp/
 COPY ./dbdump.tgz /temp/
-COPY ./nginx.conf /etc/nginx/
 COPY ./mongod.conf /etc/
 
 # Restore database dump
@@ -90,8 +88,10 @@ RUN mkdir /Server/dbCerts && \
     touch /Server/dbCerts/Mongodb.pem 
 
 # Copy configuration resources
+#  - nginx.conf
 #  - startup.sh
 #  - server.user.conf
+COPY ./nginx.conf /etc/nginx/
 COPY startup.sh /Server/
 COPY server.user.conf /Server/
 
