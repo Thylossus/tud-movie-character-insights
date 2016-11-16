@@ -1,4 +1,6 @@
 #!/bin/sh
+echo "starting in 5 seconds, please copy server.user.conf now"
+sleep 5
 nginx
 mongod -f /etc/mongod.conf --fork --logappend --logpath /logs/mongod.log
 
@@ -10,6 +12,7 @@ ps aux | grep mongod
 echo "nginx started?"
 ps aux | grep nginx
 
-# echo "Starting app"
+echo "Starting app"
+cat /Server/server.user.conf
 cd /Server/app
 node app.js

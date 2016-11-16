@@ -26,19 +26,41 @@ RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
 RUN apt-get install -y nodejs
 
 # Install Nginx
-RUN apt-get install -y nginx
+RUN apt-get install -y nginx apache2-utils
 
 # Install python + dependencies
 RUN apt-get install -y python3 python3-pip
 RUN pip3 install pymongo 
 
+# Create database and temp directory
+RUN mkdir /data && mkdir /temp
+
+# Copy resources
+# Expecting the following files in this directory
+#  - images.tar.gz
+#  - dbdump.tgz
+#  - mongod.conf
+COPY ./images.tar.gz /temp/
+COPY ./dbdump.tgz /temp/
+COPY ./mongod.conf /etc/
+
+# Restore database dump
+RUN mkdir /temp/dbdump && tar -xzvf /temp/dbdump.tgz -C /temp/dbdump
+RUN mkdir /logs && touch /logs/mongod.log
+RUN mongod -f /etc/mongod.conf --fork --logappend --logpath /logs/mongod.log && \
+    mongorestore --host localhost --port 27017 /temp/dbdump/2016-10-21_06h34m.Friday 
+
+# Create directory for client and images
+RUN mkdir -p /var/www/html/mci/img/movies
+
+# Extract and copy images
+WORKDIR /temp
+RUN tar -xzvf images.tar.gz -C /var/www/html/mci/img/movies
+
 # Download repository
 WORKDIR /code
 RUN echo "Loading source code from repo https://github.com/Thylossus/tud-movie-character-insights"
 RUN git clone https://github.com/Thylossus/tud-movie-character-insights
-
-# Create directory for client and images
-RUN mkdir -p /var/www/html/mci/img/movies
 
 # Build client
 WORKDIR /code/tud-movie-character-insights/Client
@@ -53,47 +75,28 @@ RUN cp ./build/* /var/www/html/mci
 WORKDIR /code/tud-movie-character-insights/Server/app
 RUN npm install --production
 RUN mkdir /Server
+RUN htpasswd -b -c /Server/.demopass demo pass
 RUN cp -R /code/tud-movie-character-insights/Server/* /Server
+
+# Cleanup
+RUN rm -rf /code
+RUN rm -rf /temp
+RUN rm -rf /var/lib/apt/lists/*
 
 # Create empty certificates so that the server won't fail to start
 RUN mkdir /Server/dbCerts && \
     touch /Server/dbCerts/CAChain.pem && \
     touch /Server/dbCerts/Mongodb.pem 
 
-# Create database and temp directory
-RUN mkdir /data && mkdir /temp
-
-# Copy resources
-# Expecting the following files in this directory
-#  - images.tar.gz
-#  - dbdump.tgz
+# Copy configuration resources
 #  - nginx.conf
-#  - mongod.conf
 #  - startup.sh
 #  - server.user.conf
-COPY ./images.tar.gz /temp/
-COPY ./dbdump.tgz /temp/
 COPY ./nginx.conf /etc/nginx/
-COPY ./mongod.conf /etc/
 COPY startup.sh /Server/
 COPY server.user.conf /Server/
 
-# Restore database dump
-RUN mkdir /temp/dbdump && tar -xzvf /temp/dbdump.tgz -C /temp/dbdump
-RUN mkdir /logs && touch /logs/mongod.log
-RUN mongod -f /etc/mongod.conf --fork --logappend --logpath /logs/mongod.log && \ 
-    mongorestore --host localhost --port 27017 /temp/dbdump/2016-10-21_06h34m.Friday 
-
-# Extract and copy images
-WORKDIR /temp
-RUN tar -xzvf images.tar.gz -C /var/www/html/mci/img/movies
-
 WORKDIR /Server
-
-# Cleanup
-RUN rm -rf /code
-RUN rm -rf /temp
-RUN rm -rf /var/lib/apt/lists/*
 
 # Expose ports
 EXPOSE 80
