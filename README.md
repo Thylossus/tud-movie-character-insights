@@ -9,3 +9,15 @@ Either execute `deploy-client.sh` or merge the branch (e.g. master) you want to 
 
 ### Server
 Either execute `deploy-server.sh` or merge the branch (e.g. master) you want to deploy into the branch deploy/frontend and push it to upstream afterwards.
+
+## Links
+
+* Personality Insights
+  * Home: https://www.ibm.com/watson/developercloud/personality-insights.html
+  * Personality Insights Basics: https://www.ibm.com/watson/developercloud/doc/personality-insights/basics.shtml
+  * Personality Models: https://www.ibm.com/watson/developercloud/doc/personality-insights/models.shtml
+* Technologies:
+  * Node.js: https://nodejs.org/en/
+  * Python: https://www.python.org/
+  * React: https://facebook.github.io/react/
+  * Mongodb: https://docs.mongodb.com
