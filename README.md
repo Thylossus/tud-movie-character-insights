@@ -24,4 +24,5 @@ The *Server* directory contains the application's backend (directory *api*) as w
   * Node.js: https://nodejs.org/en/
   * Python: https://www.python.org/
   * React: https://facebook.github.io/react/
+  * Material UI: http://www.material-ui.com/
   * Mongodb: https://docs.mongodb.com
